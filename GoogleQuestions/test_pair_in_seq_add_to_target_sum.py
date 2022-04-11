@@ -1,26 +1,26 @@
 
-import pair_in_seq_add_to_target_sum as find_sum
+from pair_in_seq_add_to_target_sum import find_pair_in_seq_naive, find_pair_in_seq_complement, find_pair_in_seq_complement, find_pair_in_seq_complement
 
 # This is a unit test file for pair_in_seq_add_to_target_sum 
 def test_find_pair_in_seq_naive(): 
-    assert len(find_sum.find_pair_in_seq_naive([1,2,3,9],8)) == 0, 'No matching values'
-    assert len(find_sum.find_pair_in_seq_naive([1,2,4,4],8)) == 2
+    assert_common(find_pair_in_seq_naive)
 
 
 def test_find_pair_in_seq_complement(): 
-    assert len(find_sum.find_pair_in_seq_complement([1,2,3,9],8)) == 0, 'No matching values'
-    assert len(find_sum.find_pair_in_seq_complement([1,2,4,4],8)) == 2
+    assert_common(find_pair_in_seq_complement)
 
 
 def test_find_pair_in_seq_complement_sorted(): 
-    assert len(find_sum.find_pair_in_seq_complement([1,2,3,9],8)) == 0, 'No matching values'
-    assert len(find_sum.find_pair_in_seq_complement([1,2,4,4],8)) == 2
+    assert_common(find_pair_in_seq_complement)
 
 
 def find_pair_in_seq_iterative(): 
-    assert len(find_sum.find_pair_in_seq_complement([1,2,3,9],8)) == 0, 'No matching values'
-    assert len(find_sum.find_pair_in_seq_complement([1,2,4,4],8)) == 2
+    assert_common(find_pair_in_seq_complement)
 
+
+def assert_common(func): 
+    assert len(func([1,2,3,9],8)) == 0, 'No matching values'
+    assert len(func([1,2,4,4],8)) == 2
 
 if __name__ == '__main__': 
     test_find_pair_in_seq_naive()
