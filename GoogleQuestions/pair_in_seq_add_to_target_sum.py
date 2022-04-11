@@ -32,6 +32,49 @@ def find_pair_in_seq_complement(seq_of_nums,target_sum):
     return ''
 
 
+def find_pair_in_seq_complement_sorted(seq_of_nums,target_sum): 
+    # Additionally assume numbers are sorted to make search more efficient 
+    # No need to return to numbers once they've been searched. 
+    # Any sequence could be sorted as a first step in this approach
+    while seq_of_nums: 
+        num = seq_of_nums.pop()
+        complement = target_sum - num
+        if complement in seq_of_nums: 
+            print('The matching numbers are: ' + str(num) + ' and '+ str(complement))
+            return [num,complement]
+    # If no values returned during search, nothing was found - return empty 
+    print('No pair of numbers which adds to sum.')
+    return ''
+
+
+def find_pair_in_seq_iterative(seq_of_nums,target_sum): 
+    # Linearly search the space by bounding numbers and relying on sorted order. 
+    # Take lowest number and advance highest until it's about to be too high. 
+    # Advance lowest number until valid pair is found, or return no match. 
+    ind_smaller = 0
+    ind_larger = 1 
+    sum_equals_target = False
+    while not sum_equals_target and ind_larger<=len(seq_of_nums): 
+        sum_of_ints = seq_of_nums[ind_smaller] + seq_of_nums[ind_larger]
+        if sum_of_ints == target_sum: 
+            # The smallest possible sum is (now) too high - no valid pair
+            # No need to set sum_equals_target to True, as return will exit loop
+            return [seq_of_nums[ind_smaller],seq_of_nums[ind_larger]]
+        elif sum_of_ints < target_sum: 
+            ind_larger += 1
+    
+    while not sum_equals_target and ind_smaller < ind_larger: 
+        sum_of_ints = seq_of_nums[ind_smaller] + seq_of_nums[ind_larger]
+        if sum_of_ints == target_sum: 
+            # The smallest possible sum is (now) too high - no valid pair
+            return [seq_of_nums[ind_smaller],seq_of_nums[ind_larger]]
+        elif sum_of_ints < target_sum: 
+            ind_smaller += 1
+    # If no values returned during search, nothing was found - return empty 
+    print('No pair of numbers which adds to sum.')
+    return
+
+
 if __name__ == '__main__': 
     # seq_of_nums = [1,2,3,9]
     # target_sum = 8
