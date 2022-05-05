@@ -26,4 +26,3 @@ def assert_common(func):
 
 if __name__ == '__main__': 
     retcode = pytest.main()
-    print('Everything passed.')
