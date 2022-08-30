@@ -1,9 +1,9 @@
-def dec_to_bin(dec): 
+def dec_to_bin_rec(dec): 
     if dec == 0: 
         return '0'
     if dec == 1: 
         return '1'
-    return dec_to_bin(dec // 2) + str(dec % 2)
+    return dec_to_bin_rec(dec // 2) + str(dec % 2)
 
 def dec_to_bin_iter(dec): 
     if dec == 0: 
@@ -12,8 +12,8 @@ def dec_to_bin_iter(dec):
         return '1'
     
     bin = ''
-    while dec >1: 
-        bin = str(dec % 2) + bin 
+    while dec>1: 
+        bin = str(dec % 2) + bin
         dec = dec // 2
     bin = '1' + bin
     return bin
@@ -30,7 +30,7 @@ def test_digits(fun):
 
 if __name__ == '__main__': 
     print('Testing Recursive.')
-    test_digits(dec_to_bin)
+    test_digits(dec_to_bin_rec)
     print('Done testing Recursive.')
 
     print('Testing iterative.')

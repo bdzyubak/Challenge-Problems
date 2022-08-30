@@ -16,6 +16,7 @@ def bin_to_dec_rec(bin):
         return 0
     elif bin == '1': 
         return 1
+    
     return bin_to_dec_rec(bin[:-1])*2 + int(bin[-1])
 
 def use_builtin_to_test(num): 
