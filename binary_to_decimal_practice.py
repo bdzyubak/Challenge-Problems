@@ -1,23 +1,10 @@
 def bin_to_dec_iter(bin): 
-    if bin == '0': 
-        return 0
-    elif bin == '1': 
-        return 1
     
-    dec = 0
-    counter = 0
-    for i in bin[::-1]: 
-        dec += int(i)*2**(counter)
-        counter += 1
-    return dec
+    return 
 
 def bin_to_dec_rec(bin): 
-    if bin == '0': 
-        return 0
-    elif bin == '1': 
-        return 1
     
-    return bin_to_dec_rec(bin[:-1])*2 + int(bin[-1])
+    return 
 
 def use_builtin_to_test(num): 
     bin_string = bin(num)[2:]

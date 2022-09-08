@@ -1,24 +1,13 @@
 def climb_stairs_iterative(stairs): 
-    if stairs <=0: 
-        return 0 
-    if stairs == 1: 
-        return stairs
-    n_ways = 1 # Single steps all the way
-    while stairs >=2: 
-        n_ways += stairs-1
-        stairs -= 2
-    return n_ways
+   
+    return 
 
 def climb_stairs_recursive(stairs): 
-    return climb_stairs_rec(stairs) + 1 # Adjust for first step
+    return 
 
 def climb_stairs_rec(stairs): 
-    if stairs <=0: 
-        return 0 
-    if stairs == 1: 
-        return 1
-    n_ways = climb_stairs_rec(stairs-1) + climb_stairs_rec(stairs-2)
-    return n_ways
+    
+    return 
 
 
 if __name__ == '__main__': 

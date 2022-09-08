@@ -8,7 +8,7 @@ def dec_to_hex_rec(dec):
     last_digit = dec % 16
     if remaining_digits == 0: 
         return conversion_table[last_digit]
-    return dec_to_hex_rec(dec // 16) + conversion_table[last_digit]
+    return dec_to_hex_rec(remaining_digits) + conversion_table[last_digit]
 
 def dec_to_hex_iter(dec): 
     if dec == 0: 

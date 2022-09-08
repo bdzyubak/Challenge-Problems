@@ -6,68 +6,51 @@ ws.geometry('400x450+1000+300')
 ws.title('PythonGuides: Stopwatch')
 ws.config(bg='#299617')
 ws.resizable(0,0)
+# Globals 
+counter = 0
+start_time = 0
+running = False 
 
 def counter_label(lbl):
     def count():
         if running:
-            global counter, start_time
-            time_delta = datetime.now() - start_time
-            display = get_hms_from_timedelta(time_delta)
+            
+            display = get_hms_from_timedelta()
             lbl['text']=display    
             
             lbl.after(1000, count)    
     count()     
 
 def StartTimer(lbl):
-    global running, start_time
-    start_time = datetime.now()
-    running=True
+    
     counter_label(lbl)
     start_btn['state']='disabled'
     stop_btn['state']='normal'
     reset_btn['state']='normal'
 
 def StopTimer():
-    global running
     start_btn['state']='normal'
     stop_btn['state']='disabled'
     reset_btn['state']='normal'
-    running = False
+    
 
 def ResetTimer(lbl):
-    global counter, start_time
-    counter=0
     if running==False:      
         reset_btn['state']='disabled'
-        lbl['text']='00:00:00'
-    else:                          
-        lbl['text']='00:00:00'
-        start_time = datetime.now()
-
+    lbl['text']='00:00:00'
+    
 def get_hms_from_timedelta(time_delta): 
-    hours = convert_to_string_leading_zero(time_delta.seconds//3600)
+    hours = str(time_delta.seconds//3600).zfill(2)
     remaining_time = time_delta.seconds % 3600
-    minutes = convert_to_string_leading_zero(remaining_time // 60)
+    minutes = str(remaining_time // 60).zfill(2)
     remaining_time = remaining_time % 60
-    seconds = convert_to_string_leading_zero(remaining_time)
+    seconds = str(remaining_time).zfill(2)
     display_str = hours + ':' + minutes + ':' + seconds
     return display_str
-
-def convert_to_string_leading_zero(num): 
-    if num<10: 
-        num_str = '0' + str(num)
-    else: 
-        num_str = str(num)
-    return num_str
 
 # bg = PhotoImage(file='stopwatch.png')
 img = Label(ws, bg='#299617')
 img.place(x=75, y=50)
-
-# Globals 
-counter = 0
-start_time = 0
-running = False 
 
 # GUI defaults
 lbl = Label(
