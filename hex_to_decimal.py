@@ -5,17 +5,15 @@ conversion_table = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
 
 def hex_to_dec_rec(hex): 
     if not hex: 
-        return 0
+        return 0 
     return hex_to_dec_rec(hex[:-1])*16 + conversion_table[hex[-1]]
 
 def hex_to_dec_iter(hex):     
-    if hex == '0': 
-        return 0
-    
     dec = 0
     power_counter = len(hex) - 1
+    
     for digit in hex: 
-        dec += conversion_table[digit]*16**power_counter
+        dec += conversion_table[digit] * 16 ** power_counter
         power_counter -= 1
     return dec
 

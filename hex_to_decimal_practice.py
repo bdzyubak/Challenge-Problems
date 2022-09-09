@@ -4,11 +4,11 @@ conversion_table = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4,
                     'D': 13, 'E': 14, 'F': 15}
 
 def hex_to_dec_rec(hex): 
-   
+    
     return 
 
 def hex_to_dec_iter(hex):     
-   
+    
     return 
 
 def use_builtin_to_test(num): 
