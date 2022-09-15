@@ -40,13 +40,8 @@ def ResetTimer(lbl):
     lbl['text']='00:00:00'
     
 def get_hms_from_timedelta(time_delta): 
-    hours = str(time_delta.seconds//3600).zfill(2)
-    remaining_time = time_delta.seconds % 3600
-    minutes = str(remaining_time // 60).zfill(2)
-    remaining_time = remaining_time % 60
-    seconds = str(remaining_time).zfill(2)
-    display_str = hours + ':' + minutes + ':' + seconds
-    return display_str
+
+    return 
 
 # bg = PhotoImage(file='stopwatch.png')
 img = Label(ws, bg='#299617')

@@ -14,7 +14,7 @@ def counter_label(lbl):
             time_delta = datetime.now() - start_time
             display = get_hms_from_timedelta(time_delta)
             lbl['text']=display    
-            
+            print(display)
             lbl.after(1000, count)    
     count()     
 
@@ -42,7 +42,7 @@ def ResetTimer(lbl):
         lbl['text']='00:00:00'
     else:                          
         lbl['text']='00:00:00'
-        start_time = datetime.now()
+        # start_time = datetime.now()
 
 def get_hms_from_timedelta(time_delta): 
     hours = convert_to_string_leading_zero(time_delta.seconds//3600)
