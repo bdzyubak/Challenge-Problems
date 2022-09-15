@@ -5,14 +5,14 @@ def maxSubarray(arr):
         return max(arr), max(arr)
     
     sequence_sum = 0
-    max_so_far = max_ending_here = 0
+    max_left_bound = max_ending_here = 0
     for i in arr: 
-        max_ending_here = max(i, max_ending_here + i)        
-        max_so_far = max(max_so_far, max_ending_here)
+        max_left_bound = max(i, max_left_bound + i)        
+        max_both_bounds = max(max_both_bounds, max_left_bound)
         if i>0: 
             sequence_sum+=i
 
-    return max_so_far, sequence_sum
+    return max_both_bounds, sequence_sum
 
 if __name__ == '__main__': 
     arr = [1, 2, 3, 4]
