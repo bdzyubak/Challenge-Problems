@@ -9,51 +9,20 @@ class LinkedList:
         self.head = None
 
     def print(self): 
-        if not self.head: 
-            print('Empty list.') 
-            return
-        items = list()
-        current = self.head
-        while current: 
-            print(current.data)
-            items.append(current.data)
-            current = current.next
-        return items
+        return 
 
-    def make_from_list(self,list): 
-        for item in list: 
-            self.insert_start(Node(item))
+    # def make_from_list(self,list): 
+    #     for item in list: 
+    #         self.insert_start(Node(item))
 
     def insert(self,data): 
-        new_node = Node(data)
-        if not self.head: 
-            self.head = new_node
-            return
-        
-        current = self.head
-        while current.next: 
-            current = current.next
-        current.next = new_node
+        return
     
     def insert_start(self,data): 
-        new_node = Node(data)
-        if not self.head: 
-            self.head = new_node
-            return
-        new_node.next = self.head
-        self.head = new_node
+        return
 
     def reverse(llist): 
-        prev = None
-        node = llist.head
-        while node: 
-            keep = node.next
-            node.next = prev
-            prev = node
-            node = keep
-        llist.head = prev
-        return llist
-        
+        return     
 
 if __name__ == '__main__':     
     regular_list = ["Mon","Tue","Wed"]
@@ -67,10 +36,10 @@ if __name__ == '__main__':
     items_manual = llist_manual.print()
     assert items_manual == regular_list
     
-    llist_from_list = LinkedList()
-    llist_from_list.make_from_list(regular_list)
-    items_from_list = llist_from_list.print()
-    assert items_from_list == regular_list
+    # llist_from_list = LinkedList()
+    # llist_from_list.make_from_list(regular_list)
+    # items_from_list = llist_from_list.print()
+    # assert items_from_list == regular_list
 
     list_insert_start = deepcopy(llist_manual)
     list_insert_start.insert_start("Fri")
