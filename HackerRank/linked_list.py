@@ -20,9 +20,13 @@ class LinkedList:
             current = current.next
         return items
 
-    def make_from_list(self,list): 
-        for item in list: 
-            self.insert_start(Node(item))
+    def insert_start(self,data): 
+        new_node = Node(data)
+        if not self.head: 
+            self.head = new_node
+            return
+        new_node.next = self.head
+        self.head = new_node
 
     def insert(self,data): 
         new_node = Node(data)
@@ -34,26 +38,48 @@ class LinkedList:
         while current.next: 
             current = current.next
         current.next = new_node
-    
-    def insert_start(self,data): 
-        new_node = Node(data)
-        if not self.head: 
-            self.head = new_node
-            return
-        new_node.next = self.head
-        self.head = new_node
 
-    def reverse(llist): 
-        prev = None
-        node = llist.head
-        while node: 
-            keep = node.next
-            node.next = prev
-            prev = node
-            node = keep
-        llist.head = prev
-        return llist
-        
+    def reverse(self): 
+        new_list = LinkedList()
+        current = self.head
+        while current: 
+            new_list.insert_start(current.data)
+            current = current.next
+        return new_list
+
+    # def reverse(self): 
+    #     # Verbose version with insert_start expanded
+    #     new_list = LinkedList()
+    #     current = self.head
+    #     while current: 
+    #         # Insert at start part
+    #         new_data = Node(current.data)
+    #         current_head = new_list.head
+    #         new_list.head = new_data
+    #         new_list.head.next = current_head
+    #         # End insert at start part
+    #         current = current.next
+    #     return new_list
+
+    # def reverse(llist): 
+    #     # Alternative verbose solution
+    #     prev = None
+    #     node = llist.head
+    #     while node: 
+    #         keep = node.next
+    #         node.next = prev
+    #         prev = node
+    #         node = keep
+    #     llist.head = prev
+    #     return llist
+
+def make_from_list(list): 
+    llist = LinkedList()
+    # Inserting at the start of linked lists is more efficient, but will reverse order. 
+    # So traverse the input in opposite order to use this functionality
+    for item in list[::-1]: 
+        llist.insert_start(item)
+    return llist        
 
 if __name__ == '__main__':     
     regular_list = ["Mon","Tue","Wed"]
@@ -66,11 +92,6 @@ if __name__ == '__main__':
     e2.next = e3
     items_manual = llist_manual.print()
     assert items_manual == regular_list
-    
-    llist_from_list = LinkedList()
-    llist_from_list.make_from_list(regular_list)
-    items_from_list = llist_from_list.print()
-    assert items_from_list == regular_list
 
     list_insert_start = deepcopy(llist_manual)
     list_insert_start.insert_start("Fri")
@@ -82,8 +103,11 @@ if __name__ == '__main__':
     items_insert_end = list_insert_end.print()
     assert items_insert_end == regular_list +["Fri"]
 
-    list_reversed = deepcopy(llist_manual)
-    list_reversed.reverse()
+    llist_from_list = make_from_list(regular_list)
+    items_from_list = llist_from_list.print()
+    assert items_from_list == regular_list
+
+    list_reversed = deepcopy(llist_manual).reverse()
     items_reversed = list_reversed.print()
     assert items_reversed == regular_list[::-1]
     print('Tests pased.')
