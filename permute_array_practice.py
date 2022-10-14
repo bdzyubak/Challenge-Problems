@@ -1,10 +1,23 @@
 import itertools
 
 def permute_rec(arr): 
-    pass
+    if len(arr)<=1: 
+        return [arr]
+    permutations = list()
+    for i in range(len(arr)): 
+        sub_perms_list = permute_rec(arr[:i]+arr[i+1:])
+        for perm in sub_perms_list: 
+            permutations.append([arr[i]] + perm)
+    return permutations
 
 # def permute_iter(arr): 
-#     pass
+#     permutations = list()
+
+#     for i in len(arr)-1: 
+#         sub_perms_list = permute_rec(arr[:i]+arr[i+1:])
+#         for perm in sub_perms_list: 
+#             permutations.append(i + perm)
+#     return permutations
     
 
 def test_permute(fun,arr): 
@@ -38,4 +51,4 @@ if __name__ == '__main__':
     # arr = [1,5,7,3,2]
     # fun = permute_iter
     # test_permute(fun,arr)
-    print('Tests passed.')
+    # print('Tests passed.')

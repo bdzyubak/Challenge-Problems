@@ -1,9 +1,7 @@
 def bin_to_dec_iter(bin): 
-    
     return 
 
 def bin_to_dec_rec(bin): 
-    
     return 
 
 def use_builtin_to_test(num): 
@@ -24,5 +22,3 @@ if __name__ == '__main__':
     print('Testing Iterative.')
     test_digits(bin_to_dec_iter)
     print('Done testing Iterative.')
-
-

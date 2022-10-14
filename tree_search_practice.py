@@ -14,10 +14,10 @@ graph = {
 }
 
 def depth_first_search(graph, node): 
-    pass
+    return 
 
 def breadth_first_search(graph,node): 
-    pass
+    return 
 
 if __name__ == '__main__': 
     print('Testing depth first search.')

@@ -1,197 +1,42 @@
 
-def binary_search_recursive(arr,x): 
-    mid = search_binary_recursive(arr,x,0,len(arr)-1)
-    return mid
+arr = [ 2, 3, 4, 10, 40 ]
+# x_exact = {2:0, 3:1, 10:3 ,40:4, 50:''}
+x_nonexact = {0:0, 2:0, 3:1, 3.5:2, 10:3 ,40:4, 30:4, 50:5}
 
-def search_binary_recursive(arr,x,low,high): 
-    if len(arr) == 1: 
-        return 0
-    
-    if low >= high: 
-        return low
+def test_search_nonexact(fun): 
+    for value in x_nonexact: 
+        result = fun(arr,value)
+        expected = x_nonexact[value]
+        assert result == expected, 'Value ' + str(value) + ' found in position ' + str(result) + ' instead of ' + str(expected)
 
-    mid = (low + high) // 2
-    print(mid)
-    if arr[mid] == x: 
-        return mid
-    elif arr[mid] < x: 
-        return search_binary_recursive(arr,x,mid+1,high)
-    elif arr[mid] > x: 
-        return search_binary_recursive(arr,x,low,mid-1)
 
-def binary_search_nonexact_iterative(arr,x): 
-    if len(arr) == 1: 
-        return 0
-    
+
+def binary_search_nonexact_iterative(arr,x):    
     low = 0
-    high = len(arr)-1
+    high = len(arr) - 1
     mid = (low + high) // 2
 
     while low<=high: 
-        # print(mid)
         if arr[mid] == x: 
             return mid
-        elif arr[mid] < x: 
-            low = mid + 1
-        elif arr[mid] > x: 
-            high = mid - 1
-        mid = (low + high) // 2
-    
-    if mid <= 0: 
-        return 0
-    if mid >= (len(arr)-1): 
-        return len(arr)
-    else: 
-        if arr[mid] > x: 
-            return mid - 1
-        else: 
-            return mid + 1
-
-arr = [ 2, 3, 4, 10, 40 ]
-# Iterative 
-x = 15
-result = binary_search_nonexact_iterative(arr,x)
-assert result == 4
-
-x = 1
-result = binary_search_nonexact_iterative(arr,x)
-assert result == 0
-
-x = 2
-result = binary_search_nonexact_iterative(arr,x)
-assert result == 0
-
-x = 45
-result = binary_search_nonexact_iterative(arr,x)
-assert result == 5
-
-# Recursive 
-x = 15
-result = binary_search_recursive(arr,x)
-assert result == 4
-
-x = 1
-result = binary_search_recursive(arr,x)
-assert result == 0
-
-x = 2
-result = binary_search_recursive(arr,x)
-assert result == 0
-
-x = 45
-result = binary_search_recursive(arr,x)
-assert result == 5
-print('Done.')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-def binary_search(arr,x): 
-    low = 0
-    high = len(arr) - 1
-
-    while high>= low: 
-        mid = (high+low) //2
-        if x > arr[mid]: 
-            low = mid + 1
         elif x < arr[mid]: 
             high = mid - 1
-        else: 
-            return mid
-        print(str(low) + ' ' + str(mid) + ' ' + str(high))
-    # Index not found
-    return -1 
-
+        elif x > arr[mid]: 
+            low = mid + 1
+        mid = (low+high) // 2
+    
+    if low == 0: 
+        return low
+    elif high == len(arr): 
+        return high
+    else: 
+        if x > arr[mid]: 
+            return mid + 1
+        elif x > arr[mid]: 
+            return mid - 1
 
 if __name__ == '__main__': 
-    # Test array
-    arr = [ 2, 3, 4, 10, 40 ]
-    x = 10
-    
-    # Function call
-    result = binary_search(arr,x)
-    assert result == 3
-    print('Done.')
-
-
-
-
-
-
-
-# def binary_search(array,value): 
-#     return binary_search_resursive(array,value,min_ind=0,max_ind=len(array)-1)
-
-# def binary_search_resursive(arr, x, min_ind, max_ind):
-#     if min_ind < 0: 
-#         return 0
-#     elif max_ind > len(arr)-1: 
-#         return len(arr)
- 
-#     mid = (max_ind + min_ind) // 2
-
-#     # If element is present at the middle itself
-#     if arr[mid] == x:
-#         return mid
-
-#     # If element is smaller than mid, then it can only
-#     # be present in left subarray
-#     elif arr[mid] > x:
-#         return binary_search_resursive(arr, x, min_ind, mid - 1)
-
-#     # Else the element can only be present in right subarray
-#     else:
-#         return binary_search_resursive(arr, x, mid + 1, max_ind) 
+    print('Doing non-exact iterative test.')
+    fun = binary_search_nonexact_iterative
+    test_search_nonexact(fun)
+    print('Tests passed.')

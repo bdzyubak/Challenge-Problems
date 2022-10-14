@@ -1,9 +1,7 @@
 def dec_to_bin_rec(dec): 
-   
     return 
 
 def dec_to_bin_iter(dec): 
-    
     return 
 
 def use_builtin_to_test(num): 

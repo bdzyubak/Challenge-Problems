@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 label = 1
 connectivity = 4
@@ -64,7 +65,11 @@ if __name__ == '__main__':
             [3,0,5,5,5,0,4],
             [0,0,0,0,0,0,0],
             [6,6,6,6,6,6,6]])
-
+    
+    start_time = time.time()
+    label_image()
+    run_time = time.time() - start_time
+    print('The run time was: ' + str(run_time))
     label_image()
     plot(image)
     plt.show()

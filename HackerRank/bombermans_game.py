@@ -43,7 +43,7 @@ def make_grid_center():
             '...']
     return grid
 
-def test_bomberMan(): 
+def test_bomberMan_center(): 
     grid = make_grid_center()
     n = 1
     grid_after_n = bomberMan(n,grid)
@@ -68,6 +68,65 @@ def test_bomberMan():
                             'O.O']
     assert grid_after_n == grid_after_n_correct
 
+def make_grid_example2(): 
+    grid =['.......',
+           '...O...',
+           '....O..',
+           '.......',
+           'OO.....',
+           'OO.....']
+    return grid
+
+def test_bomberMan_example2(): 
+    grid = make_grid_example2()
+
+    n = 1
+    grid_after_n = bomberMan(n,grid)
+    assert grid_after_n == grid
+
+    grid = make_grid_example2()
+    n = 2
+    grid_after_n = bomberMan(n,grid)
+    grid_after_n_correct = ['OOOOOOO',
+                            'OOOOOOO',
+                            'OOOOOOO',
+                            'OOOOOOO',
+                            'OOOOOOO',
+                            'OOOOOOO']
+    assert grid_after_n == grid_after_n_correct 
+
+    grid = make_grid_example2()
+    n = 3
+    grid_after_n = bomberMan(n,grid)
+    grid_after_n_correct = ['OOO.OOO',
+                            'OO...OO',
+                            'OOO...O',
+                            '..OO.OO',
+                            '...OOOO',
+                            '...OOOO']
+    assert grid_after_n == grid_after_n_correct 
+
+def make_grid_test_case1(): 
+    grid = ['.......',
+            '...O.O.',
+            '....O..',
+            '..O....',
+            'OO...OO',
+            'OO.O...']
+    return grid
+
+def test_bomberMan_test_case1(): 
+    grid = make_grid_test_case1()
+    n = 5
+    grid_after_n_correct = ['.......',
+                            '...O.O.',
+                            '...OO..',
+                            '..OOOO.',
+                            'OOOOOOO',
+                            'OOOOOOO']
+    grid_after_n = bomberMan(n,grid)
+    assert grid_after_n == grid_after_n_correct 
+
 # def make_initial(c,r): 
 #     mid_r = r // 2
 #     mid_c = r // 2
@@ -76,4 +135,8 @@ def test_bomberMan():
 #     return game_board
 
 if __name__ == '__main__': 
-    test_bomberMan()
+    test_bomberMan_center()
+
+    test_bomberMan_example2()
+
+    test_bomberMan_test_case1()
