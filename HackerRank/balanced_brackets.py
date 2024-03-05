@@ -31,29 +31,30 @@
 #     else: 
 #         return "YES"
 
-def isBalanced(s): 
+def isBalanced(s):
     stack = []
-    for char in s: 
-        if stack and matched(stack[-1],char): 
+    for char in s:
+        if stack and matched(stack[-1], char):
             stack.pop()
-        else: 
+        else:
             stack.append(char)
     print(stack)
-            
-    if stack: 
+
+    if stack:
         balanced = 'NO'
-    else: 
+    else:
         balanced = 'YES'
     return balanced
 
-def matched(first,second): 
-    if first == '{' and second == '}': 
+
+def matched(first, second):
+    if first == '{' and second == '}':
         return True
-    elif first == '[' and second == ']': 
+    elif first == '[' and second == ']':
         return True
-    elif first == '(' and second == ')': 
+    elif first == '(' and second == ')':
         return True
-    else: 
+    else:
         return False
 
 # if __name__ == '__main__': 
@@ -64,21 +65,21 @@ def matched(first,second):
 #         print "YES"
 #     else:
 #         print "NO"
-    
-    # s = '{[()]}' 
-    # print('New test case: ' + s)
-    # assert isBalanced(s) == 'YES'
 
-    # s = '{[(])}' 
-    # print('New test case: ' + s)
-    # assert isBalanced(s) == 'NO'
+# s = '{[()]}'
+# print('New test case: ' + s)
+# assert isBalanced(s) == 'YES'
 
-    # s = '{{[[(())]]}}' 
-    # print('New test case: ' + s)
-    # assert isBalanced(s) == 'YES'
+# s = '{[(])}'
+# print('New test case: ' + s)
+# assert isBalanced(s) == 'NO'
 
-    # s = '(([}[{{[[[})}(][(](]]}[]])()([{(]{(({([}[)(}{)][})[[(}])[]{]){{((((}[{]})])}]{(])]}}}{({)[)][[)[})(][[[}}{][]{[())]}[}{}]((]))((}}([(})[[{[}([[}{(]{})}}]}}}[[{[){[[({}[[](}]{]){}]{[]){[[(}}))}))}])([]}{}{{[}){[({([{)])()[[)((]' 
-    # print('New test case: ' + s)
-    # assert isBalanced(s) == 'NO'
+# s = '{{[[(())]]}}'
+# print('New test case: ' + s)
+# assert isBalanced(s) == 'YES'
 
-    # print('Done.')
+# s = '(([}[{{[[[})}(][(](]]}[]])()([{(]{(({([}[)(}{)][})[[(}])[]{]){{((((}[{]})])}]{(])]}}}{({)[)][[)[})(][[[}}{][]{[())]}[}{}]((]))((}}([(})[[{[}([[}{(]{})}}]}}}[[{[){[[({}[[](}]{]){}]{[]){[[(}}))}))}])([]}{}{{[}){[({([{)])()[[)((]'
+# print('New test case: ' + s)
+# assert isBalanced(s) == 'NO'
+
+# print('Done.')

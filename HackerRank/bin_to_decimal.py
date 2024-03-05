@@ -1,22 +1,25 @@
-def bin_to_dec(bin_string): 
+def bin_to_dec(bin_string):
     return bin_to_dec_recursive(bin_string)
 
-def bin_to_dec_iterative(bin_string): 
+
+def bin_to_dec_iterative(bin_string):
     dec = 0
-    while bin_string: 
-        dec += int(bin_string[0]) * 2**(len(bin_string)-1)
+    while bin_string:
+        dec += int(bin_string[0]) * 2 ** (len(bin_string) - 1)
         bin_string = bin_string[1:]
     return dec
 
-def bin_to_dec_recursive(bin_string): 
-    if not bin_string: 
+
+def bin_to_dec_recursive(bin_string):
+    if not bin_string:
         return 0
-    dec = int(bin_string[0]) * 2**(len(bin_string)-1) + bin_to_dec(bin_string[1:])
+    dec = int(bin_string[0]) * 2 ** (len(bin_string) - 1) + bin_to_dec(bin_string[1:])
     return dec
 
-if __name__ == "__main__": 
+
+if __name__ == "__main__":
     n = '0'
-    assert bin_to_dec(n) == 0 
+    assert bin_to_dec(n) == 0
 
     n = '1'
     assert bin_to_dec(n) == 1
@@ -52,5 +55,5 @@ if __name__ == "__main__":
     assert bin_to_dec(n) == 11
 
     n = '1100'
-    assert bin_to_dec(n) == 12 
+    assert bin_to_dec(n) == 12
     print('Done.')

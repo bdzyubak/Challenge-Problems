@@ -1,4 +1,6 @@
 from copy import deepcopy
+
+
 class Node(object):
     def __init__(self, data=None, next_node=None):
         self.data = data
@@ -6,26 +8,27 @@ class Node(object):
 
 
 class LinkedList:
-    def __init__(self): 
+    def __init__(self):
         self.head = None
 
-    def print(self): 
+    def print(self):
         return
 
-    def insert_start(self,data): 
+    def insert_start(self, data):
         return
 
-    def insert(self,data): 
+    def insert(self, data):
         return
 
-    def make_from_list(self,list): 
+    def make_from_list(self, list):
         return
 
-    def reverse(self): 
-        return 
+    def reverse(self):
+        return
 
-if __name__ == '__main__':     
-    regular_list = ["Mon","Tue","Wed"]
+
+if __name__ == '__main__':
+    regular_list = ["Mon", "Tue", "Wed"]
 
     llist_manual = LinkedList()
     llist_manual.head = Node(regular_list[0])
@@ -44,7 +47,7 @@ if __name__ == '__main__':
     list_insert_end = deepcopy(llist_manual)
     list_insert_end.insert("Fri")
     items_insert_end = list_insert_end.print()
-    assert items_insert_end == regular_list +["Fri"]
+    assert items_insert_end == regular_list + ["Fri"]
 
     llist_from_list = LinkedList()
     llist_from_list.make_from_list(regular_list)
