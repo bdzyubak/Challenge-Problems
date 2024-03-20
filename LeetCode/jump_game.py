@@ -1,9 +1,8 @@
 def canJump(nums: list[int]) -> bool:
-    jump = 1
-    for num in nums:
-        jump -= 1
-        if jump < 0:
+    max_distance = 0
+    for i in range(0, len(nums) - 1):
+        max_distance = max(max_distance, nums[i])
+        if max_distance <= 0:
             return False
-        jump = max(jump, num)
-
+        max_distance -= 1
     return True
