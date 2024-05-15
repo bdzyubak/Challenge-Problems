@@ -1,0 +1,3 @@
+# The function will work correctly if set(s) are removed and the pairs dictionary is used instead of them
+# The function will work correctly if the expression is made up of numbers and matehmatical operators - because it skips non-paranthesis in the if-elif
+# Apparently wrong "The function will iterate through the entire string for expressions like [3 + 5 x ...]" - it will, it just skips non-parantheses

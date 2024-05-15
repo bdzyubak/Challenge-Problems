@@ -1,4 +1,4 @@
-def reverseWords( s: str) -> str:
+def reverseWords(s: str) -> str:
     words = list()
     word = ""
     for i in range(len(s)):
